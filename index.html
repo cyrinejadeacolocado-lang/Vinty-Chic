@@ -4,7 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>VintyChic</title>
+
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
   <style>
     * {
       margin: 0;
@@ -20,13 +26,13 @@
       overflow-x: hidden;
     }
 
-    /* Header & Navbar */
+    /* Header */
     header {
       background-color: #fdf8f4;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px 50px;
+      padding: 25px 70px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       position: sticky;
       top: 0;
@@ -35,83 +41,82 @@
     }
 
     header img {
-      height: 60px;
+      height: 90px;
+      transition: transform 0.3s ease;
+    }
+
+    header img:hover {
+      transform: scale(1.05);
     }
 
     nav ul {
       display: flex;
       list-style: none;
-      gap: 25px;
+      gap: 35px;
     }
 
     nav ul li a {
       text-decoration: none;
       color: #5a4a42;
-      font-weight: 500;
+      font-weight: 600;
+      font-size: 1.1rem;
       transition: color 0.3s ease, transform 0.3s ease;
     }
 
     nav ul li a:hover {
       color: #d79ca6;
-      transform: scale(1.05);
+      transform: scale(1.1);
     }
 
     /* Carousel Section */
     .carousel {
       position: relative;
-      width: 100%;
-      height: 85vh;
       overflow: hidden;
-    }
-
-    .carousel-slide {
-      display: flex;
-      width: 600%;
-      animation: slide 30s infinite;
-    }
-
-    .carousel-slide img {
       width: 100%;
-      height: 85vh;
+      height: 75vh;
+      background-color: #fdf8f4;
+    }
+
+    .carousel img {
+      width: 100%;
+      height: 75vh;
       object-fit: cover;
+      display: none;
+      animation: fade 1.5s ease-in-out;
     }
 
-    @keyframes slide {
-      0% { transform: translateX(0); }
-      16% { transform: translateX(0); }
-      20% { transform: translateX(-100%); }
-      36% { transform: translateX(-100%); }
-      40% { transform: translateX(-200%); }
-      56% { transform: translateX(-200%); }
-      60% { transform: translateX(-300%); }
-      76% { transform: translateX(-300%); }
-      80% { transform: translateX(-400%); }
-      96% { transform: translateX(-400%); }
-      100% { transform: translateX(0); }
+    .carousel img.active {
+      display: block;
     }
 
+    @keyframes fade {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Hero Text */
     .hero-text {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+      color: #5a4a42;
       text-align: center;
-      color: #fff;
-      background: rgba(0,0,0,0.4);
+      background-color: rgba(255, 255, 255, 0.7);
       padding: 30px 50px;
-      border-radius: 10px;
-      animation: fadeIn 2s ease;
+      border-radius: 15px;
     }
 
     .hero-text h1 {
-      font-size: 3rem;
-      font-family: 'Montserrat', sans-serif;
-      margin-bottom: 10px;
+      font-size: 2.8rem;
+      font-weight: 600;
+      color: #8a6b5c;
     }
 
     .hero-text p {
-      font-size: 1.2rem;
-      font-weight: 400;
+      margin-top: 10px;
+      font-size: 1.1rem;
+      color: #6d5c53;
     }
 
     /* Gallery Section */
@@ -131,12 +136,12 @@
     .gallery-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
+      gap: 20px;
     }
 
     .gallery img {
       width: 100%;
-      border-radius: 12px;
+      border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       transition: transform 0.4s ease, box-shadow 0.4s ease;
       opacity: 0;
@@ -180,25 +185,38 @@
 
     .contact h2 {
       font-size: 2rem;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
       color: #8a6b5c;
     }
 
-    .contact p {
-      font-size: 1.1rem;
-      margin-bottom: 15px;
-      color: #6d5c53;
+    .contact-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      flex-wrap: wrap;
     }
 
-    .contact a {
-      color: #d79ca6;
+    .contact-buttons a {
+      background-color: #d79ca6;
+      color: white;
       text-decoration: none;
       font-weight: 600;
-      transition: color 0.3s ease;
+      padding: 12px 30px;
+      border-radius: 30px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
-    .contact a:hover {
-      color: #b57b88;
+    .contact-buttons a i {
+      font-size: 1.2rem;
+    }
+
+    .contact-buttons a:hover {
+      background-color: #b57b88;
+      transform: translateY(-3px);
     }
 
     /* Footer */
@@ -231,7 +249,7 @@
       header {
         flex-direction: column;
         gap: 10px;
-        padding: 10px 20px;
+        padding: 15px 30px;
       }
 
       nav ul {
@@ -240,15 +258,15 @@
       }
 
       .hero-text h1 {
-        font-size: 1.8rem;
+        font-size: 2rem;
       }
 
       .carousel {
         height: 60vh;
       }
 
-      .carousel-slide img {
-        height: 60vh;
+      .gallery-container {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       }
     }
   </style>
@@ -268,23 +286,20 @@
     </nav>
   </header>
 
-  <!-- Carousel Section -->
+  <!-- Carousel -->
   <section id="home" class="carousel">
-    <div class="carousel-slide">
-      <img src="assets/image_1.png" alt="Banner 1">
-      <img src="assets/image_2.png" alt="Banner 2">
-      <img src="assets/image_3.png" alt="Banner 3">
-      <img src="assets/image_4.png" alt="Banner 4">
-      <img src="assets/image_5.png" alt="Banner 5">
-      <img src="assets/image_6.png" alt="Banner 6">
-    </div>
+    <img src="assets/image_7.png" class="active" alt="Banner 1">
+    <img src="assets/image_8.png" alt="Banner 2">
+    <img src="assets/image_9.png" alt="Banner 3">
+    <img src="assets/image_10.png" alt="Banner 4">
+
     <div class="hero-text">
       <h1>Where Vintage Meets Chic</h1>
-      <p>Discover timeless thrift treasures and elevate your style sustainably.</p>
+      <p>Discover timeless thrift treasures — sustainable, stylish, and uniquely you.</p>
     </div>
   </section>
 
-  <!-- Gallery Section -->
+  <!-- Gallery -->
   <section id="gallery" class="gallery">
     <h2>Our Collection</h2>
     <div class="gallery-container">
@@ -297,7 +312,7 @@
     </div>
   </section>
 
-  <!-- About Section -->
+  <!-- About -->
   <section id="about" class="about">
     <h2>About VintyChic</h2>
     <p>
@@ -307,18 +322,38 @@
     </p>
   </section>
 
-  <!-- Contact Section -->
+  <!-- Contact -->
   <section id="contact" class="contact">
     <h2>Contact Us</h2>
-    <p>Email: <a href="mailto:cyrinejadeacolocado@gmail.com">cyrinejadeacolocado@gmail.com</a></p>
-    <p>Instagram: <a href="https://www.instagram.com/yumeko_____0/?igsh=MWd4enM4NWk3aGU4Zg%3D%3D&utm_source=qr#" target="_blank">@yumeko_____0</a></p>
-    <p>Facebook: <a href="https://www.facebook.com/cyrinejade05/" target="_blank">Cyrine Jade</a></p>
+    <div class="contact-buttons">
+      <a href="https://www.instagram.com/yumeko_____0/?igsh=MWd4enM4NWk3aGU4Zg%3D%3D&utm_source=qr#" target="_blank">
+        <i class="fab fa-instagram"></i> Instagram
+      </a>
+      <a href="https://www.facebook.com/cyrinejade05/" target="_blank">
+        <i class="fab fa-facebook-f"></i> Facebook
+      </a>
+      <a href="mailto:cyrinejadeacolocado@gmail.com">
+        <i class="fas fa-envelope"></i> Email
+      </a>
+    </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    © 2025 VintyChic. All rights reserved. Designed by <strong>Cyrine Jade A. Colocado</strong>.
+    © 2025 VintyChic | Designed by <strong>Cyrine Jade A. Colocado</strong>.
   </footer>
+
+  <!-- Carousel Script -->
+  <script>
+    const images = document.querySelectorAll('.carousel img');
+    let index = 0;
+
+    setInterval(() => {
+      images[index].classList.remove('active');
+      index = (index + 1) % images.length;
+      images[index].classList.add('active');
+    }, 5000); // 5 seconds per image
+  </script>
 
 </body>
 </html>
