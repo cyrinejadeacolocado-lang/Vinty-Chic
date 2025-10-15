@@ -37,10 +37,7 @@
       z-index: 1000;
     }
 
-    header img {
-      height: 90px;
-      transition: transform 0.3s ease;
-    }
+    header img { height: 90px; transition: transform 0.3s ease; }
     header img:hover { transform: scale(1.05); }
 
     nav ul {
@@ -48,7 +45,6 @@
       list-style: none;
       gap: 35px;
     }
-
     nav ul li a {
       text-decoration: none;
       color: #5a4a42;
@@ -56,58 +52,23 @@
       font-size: 1.1rem;
       transition: color 0.3s ease;
     }
-
     nav ul li a:hover { color: #d79ca6; }
 
     /* TOGGLE MENU */
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-    }
-
-    .bar {
-      width: 25px;
-      height: 3px;
-      background-color: #5a4a42;
-      margin: 4px 0;
-      transition: 0.4s;
-    }
+    .menu-toggle { display: none; flex-direction: column; cursor: pointer; }
+    .bar { width: 25px; height: 3px; background-color: #5a4a42; margin: 4px 0; transition: 0.4s; }
 
     @media (max-width: 768px) {
-      nav ul {
-        display: none;
-        flex-direction: column;
-        background-color: #fdf8f4;
-        position: absolute;
-        top: 90px;
-        right: 0;
-        width: 100%;
-        text-align: center;
-      }
+      nav ul { display: none; flex-direction: column; background-color: #fdf8f4; position: absolute; top: 90px; right: 0; width: 100%; text-align: center; }
       nav ul.active { display: flex; }
       .menu-toggle { display: flex; }
     }
 
     /* CAROUSEL */
-    .carousel {
-      position: relative;
-      overflow: hidden;
-      width: 100%;
-      height: 75vh;
-    }
-    .carousel img {
-      width: 100%;
-      height: 75vh;
-      object-fit: cover;
-      display: none;
-      animation: fade 1.5s ease-in-out;
-    }
+    .carousel { position: relative; overflow: hidden; width: 100%; height: 75vh; }
+    .carousel img { width: 100%; height: 75vh; object-fit: cover; display: none; animation: fade 1.5s ease-in-out; }
     .carousel img.active { display: block; }
-
-    @keyframes fade {
-      from { opacity: 0; } to { opacity: 1; }
-    }
+    @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
 
     .hero-text {
       position: absolute;
@@ -140,11 +101,7 @@
       text-align: center;
       background-color: #fffaf5;
     }
-    .gallery h2 {
-      font-size: 2rem;
-      margin-bottom: 40px;
-      color: #8a6b5c;
-    }
+    .gallery h2 { font-size: 2rem; margin-bottom: 40px; color: #8a6b5c; }
     .gallery-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -159,28 +116,18 @@
       opacity: 0;
       transition: transform 0.4s, box-shadow 0.4s, opacity 1s ease;
     }
-    .gallery img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    }
+    .gallery img:hover { transform: scale(1.05); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
     .show { opacity: 1 !important; }
 
-    /* FULL IMAGE POPUP */
+    /* POPUP FULL IMAGE */
     .popup {
       position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
+      top: 0; left: 0; width: 100%; height: 100%;
       background: rgba(0,0,0,0.8);
-      display: none;
-      justify-content: center;
-      align-items: center;
+      display: none; justify-content: center; align-items: center;
       z-index: 2000;
     }
-    .popup img {
-      max-width: 90%;
-      max-height: 80%;
-      border-radius: 10px;
-    }
+    .popup img { max-width: 90%; max-height: 80%; border-radius: 10px; }
     .popup.active { display: flex; }
 
     /* ABOUT */
@@ -189,39 +136,34 @@
       padding: 80px 40px;
       text-align: center;
     }
-    .about h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      color: #8a6b5c;
-    }
+    .about h2 { font-size: 2rem; margin-bottom: 20px; color: #8a6b5c; }
     .about p {
-      max-width: 700px;
-      margin: auto;
-      font-size: 1.1rem;
-      line-height: 1.6;
+      max-width: 700px; margin: auto;
+      font-size: 1.1rem; line-height: 1.6;
       color: #6d5c53;
     }
 
-    /* CONTACT */
-    .contact {
-      padding: 80px 40px;
+    /* ORDER SECTION */
+    .order {
+      background-color: #000;
+      color: #f7c6cc;
       text-align: center;
-      background-color: #fffaf5;
+      padding: 80px 40px;
     }
-    .contact h2 {
+    .order h2 {
       font-size: 2rem;
       margin-bottom: 30px;
-      color: #8a6b5c;
+      font-weight: 600;
     }
-    .contact-buttons {
+    .order-buttons {
       display: flex;
       justify-content: center;
       gap: 25px;
       flex-wrap: wrap;
     }
-    .contact-buttons a {
-      background-color: #d79ca6;
-      color: white;
+    .order-buttons a {
+      background-color: #f7c6cc;
+      color: #000;
       text-decoration: none;
       font-weight: 600;
       padding: 12px 30px;
@@ -231,8 +173,9 @@
       align-items: center;
       gap: 10px;
     }
-    .contact-buttons a:hover {
-      background-color: #b57b88;
+    .order-buttons a:hover {
+      background-color: #d79ca6;
+      color: #fff;
       transform: translateY(-3px);
     }
 
@@ -266,7 +209,7 @@
         <li><a href="#home">Home</a></li>
         <li><a href="#gallery">Gallery</a></li>
         <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#order">Order</a></li>
       </ul>
     </nav>
   </header>
@@ -280,7 +223,7 @@
     <div class="hero-text">
       <h1>Where Vintage Meets Chic</h1>
       <p>Discover timeless thrift treasures — sustainable, stylish, and uniquely you.</p>
-      <a href="#contact" class="shop-btn">Shop Now</a>
+      <a href="#order" class="shop-btn">Shop Now</a>
     </div>
   </section>
 
@@ -288,16 +231,16 @@
   <section id="gallery" class="gallery">
     <h2>Our Collection</h2>
     <div class="gallery-container">
-      <img src="assets/image_1.png" alt="Item 1">
-      <img src="assets/image_2.png" alt="Item 2">
-      <img src="assets/image_3.png" alt="Item 3">
-      <img src="assets/image_4.png" alt="Item 4">
-      <img src="assets/image_5.png" alt="Item 5">
-      <img src="assets/image_6.png" alt="Item 6">
+      <img src="assets/image_1.png">
+      <img src="assets/image_2.png">
+      <img src="assets/image_3.png">
+      <img src="assets/image_4.png">
+      <img src="assets/image_5.png">
+      <img src="assets/image_6.png">
     </div>
   </section>
 
-  <!-- FULL IMAGE POPUP -->
+  <!-- POPUP FULL IMAGE -->
   <div class="popup" id="popup">
     <img src="" alt="Full view">
   </div>
@@ -305,20 +248,24 @@
   <!-- ABOUT -->
   <section id="about" class="about">
     <h2>About VintyChic</h2>
-    <p>
-      VintyChic is a curated thrift boutique where every piece tells a story. 
+    <p>VintyChic is a curated thrift boutique where every piece tells a story. 
       Our mission is to make fashion sustainable, affordable, and irresistibly chic — 
-      because style never goes out of season. Join us in giving pre-loved fashion a new life!
-    </p>
+      because style never goes out of season.</p>
   </section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="contact">
-    <h2>Contact Us</h2>
-    <div class="contact-buttons">
-      <a href="https://www.instagram.com/yumeko_____0/?igsh=MWd4enM4NWk3aGU4Zg%3D%3D&utm_source=qr#" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-      <a href="https://www.facebook.com/cyrinejade05/" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
-      <a href="mailto:cyrinejadeacolocado@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+  <!-- ORDER SECTION -->
+  <section id="order" class="order">
+    <h2>Place Your Order</h2>
+    <div class="order-buttons">
+      <a href="https://www.instagram.com/yumeko_____0/?igsh=MWd4enM4NWk3aGU4Zg%3D%3D&utm_source=qr#" target="_blank">
+        <i class="fab fa-instagram"></i> Order via Instagram
+      </a>
+      <a href="https://www.facebook.com/cyrinejade05/" target="_blank">
+        <i class="fab fa-facebook-f"></i> Order via Facebook
+      </a>
+      <a href="mailto:cyrinejadeacolocado@gmail.com">
+        <i class="fas fa-envelope"></i> Order via Email
+      </a>
     </div>
   </section>
 
@@ -332,9 +279,7 @@
     // Navbar toggle
     const menuToggle = document.getElementById('menu-toggle');
     const navLinks = document.getElementById('nav-links');
-    menuToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
+    menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
 
     // Carousel
     const images = document.querySelectorAll('.carousel img');
@@ -343,16 +288,14 @@
       images[index].classList.remove('active');
       index = (index + 1) % images.length;
       images[index].classList.add('active');
-    }, 6000); // slower transition (6 seconds)
+    }, 6000);
 
     // Fade-in on scroll
-    const fadeEls = document.querySelectorAll('.gallery img, .about, .contact');
+    const fadeEls = document.querySelectorAll('.gallery img, .about, .order');
     window.addEventListener('scroll', () => {
       fadeEls.forEach(el => {
         const top = el.getBoundingClientRect().top;
-        if (top < window.innerHeight - 100) {
-          el.classList.add('show');
-        }
+        if (top < window.innerHeight - 100) el.classList.add('show');
       });
     });
 
