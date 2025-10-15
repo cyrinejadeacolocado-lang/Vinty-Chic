@@ -8,9 +8,11 @@
   <!-- Favicon -->
   <link rel="icon" href="favicon.png" type="image/png">
 
-  <!-- Fonts & Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -34,123 +36,218 @@
       top: 0;
       z-index: 1000;
     }
-    header img { height: 90px; transition: transform 0.3s ease; }
+
+    header img {
+      height: 90px;
+      transition: transform 0.3s ease;
+    }
     header img:hover { transform: scale(1.05); }
-    nav ul { display: flex; list-style: none; gap: 35px; }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 35px;
+    }
+
     nav ul li a {
-      text-decoration: none; color: #5a4a42;
-      font-weight: 600; font-size: 1.1rem;
+      text-decoration: none;
+      color: #5a4a42;
+      font-weight: 600;
+      font-size: 1.1rem;
       transition: color 0.3s ease;
     }
+
     nav ul li a:hover { color: #d79ca6; }
-    .menu-toggle { display: none; flex-direction: column; cursor: pointer; }
-    .bar { width: 25px; height: 3px; background-color: #5a4a42; margin: 4px 0; transition: 0.4s; }
+
+    /* TOGGLE MENU */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .bar {
+      width: 25px;
+      height: 3px;
+      background-color: #5a4a42;
+      margin: 4px 0;
+      transition: 0.4s;
+    }
 
     @media (max-width: 768px) {
-      nav ul { display: none; flex-direction: column; background-color: #fdf8f4; position: absolute; top: 90px; right: 0; width: 100%; text-align: center; }
+      nav ul {
+        display: none;
+        flex-direction: column;
+        background-color: #fdf8f4;
+        position: absolute;
+        top: 90px;
+        right: 0;
+        width: 100%;
+        text-align: center;
+      }
       nav ul.active { display: flex; }
       .menu-toggle { display: flex; }
     }
 
     /* CAROUSEL */
-    .carousel { position: relative; overflow: hidden; width: 100%; height: 75vh; }
-    .carousel img { width: 100%; height: 75vh; object-fit: cover; display: none; animation: fade 1.5s ease-in-out; }
+    .carousel {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      height: 75vh;
+    }
+    .carousel img {
+      width: 100%;
+      height: 75vh;
+      object-fit: cover;
+      display: none;
+      animation: fade 1.5s ease-in-out;
+    }
     .carousel img.active { display: block; }
-    @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+
+    @keyframes fade {
+      from { opacity: 0; } to { opacity: 1; }
+    }
 
     .hero-text {
-      position: absolute; top: 50%; left: 50%;
+      position: absolute;
+      top: 50%; left: 50%;
       transform: translate(-50%, -50%);
       background: rgba(255,255,255,0.7);
-      padding: 30px 50px; border-radius: 15px;
-      text-align: center; color: #8a6b5c;
+      padding: 30px 50px;
+      border-radius: 15px;
+      text-align: center;
+      color: #8a6b5c;
     }
     .hero-text h1 { font-size: 2.8rem; }
     .hero-text p { font-size: 1.1rem; margin-top: 10px; }
     .hero-text .shop-btn {
-      display: inline-block; margin-top: 20px;
-      background-color: #d79ca6; color: white;
-      text-decoration: none; padding: 12px 28px;
-      border-radius: 30px; font-weight: 600;
+      display: inline-block;
+      margin-top: 20px;
+      background-color: #d79ca6;
+      color: white;
+      text-decoration: none;
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-weight: 600;
       transition: background-color 0.3s;
     }
     .hero-text .shop-btn:hover { background-color: #b57b88; }
 
     /* GALLERY */
     .gallery {
-      padding: 80px 40px; text-align: center;
+      padding: 80px 40px;
+      text-align: center;
       background-color: #fffaf5;
     }
-    .gallery h2 { font-size: 2rem; margin-bottom: 40px; color: #8a6b5c; }
+    .gallery h2 {
+      font-size: 2rem;
+      margin-bottom: 40px;
+      color: #8a6b5c;
+    }
     .gallery-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
     }
     .gallery img {
-      width: 100%; border-radius: 10px;
+      width: 100%;
+      border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      cursor: pointer; transform: scale(1);
-      opacity: 0; transition: transform 0.4s, box-shadow 0.4s, opacity 1s ease;
+      cursor: pointer;
+      transform: scale(1);
+      opacity: 0;
+      transition: transform 0.4s, box-shadow 0.4s, opacity 1s ease;
     }
-    .gallery img:hover { transform: scale(1.05); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
     .show { opacity: 1 !important; }
 
-    /* ORDER POPUP */
-    .order-popup {
-      position: fixed; top: 0; left: 0;
+    /* FULL IMAGE POPUP */
+    .popup {
+      position: fixed;
+      top: 0; left: 0;
       width: 100%; height: 100%;
-      background: rgba(0,0,0,0.6);
-      backdrop-filter: blur(5px);
-      display: none; justify-content: center; align-items: center;
-      z-index: 3000; animation: fadeIn 0.5s ease;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
     }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-    .order-form {
-      background-color: #fffaf8;
-      padding: 40px; border-radius: 20px;
-      max-width: 450px; width: 90%;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-      text-align: center; position: relative;
+    .popup img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 10px;
     }
-    .order-form h3 { color: #b57b88; margin-bottom: 20px; font-size: 1.8rem; }
-    .order-form input, .order-form textarea {
-      width: 100%; margin-bottom: 15px;
-      padding: 10px; border-radius: 10px;
-      border: 1px solid #d9b7b7;
-      font-family: 'Poppins'; font-size: 0.95rem;
-    }
-    .order-form textarea { resize: none; height: 80px; }
-    .order-form button {
-      background-color: #d79ca6; color: white;
-      border: none; padding: 10px 20px;
-      border-radius: 25px; cursor: pointer;
-      transition: background-color 0.3s;
-      font-weight: 600; margin: 5px;
-    }
-    .order-form button:hover { background-color: #b57b88; }
-    .close-popup {
-      position: absolute; top: 10px; right: 15px;
-      font-size: 1.4rem; color: #b57b88;
-      cursor: pointer; font-weight: bold;
-    }
+    .popup.active { display: flex; }
 
     /* ABOUT */
     .about {
       background-color: #fdf8f4;
-      padding: 80px 40px; text-align: center;
+      padding: 80px 40px;
+      text-align: center;
     }
-    .about h2 { font-size: 2rem; margin-bottom: 20px; color: #8a6b5c; }
+    .about h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #8a6b5c;
+    }
     .about p {
-      max-width: 700px; margin: auto;
-      font-size: 1.1rem; line-height: 1.6; color: #6d5c53;
+      max-width: 700px;
+      margin: auto;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #6d5c53;
+    }
+
+    /* CONTACT */
+    .contact {
+      padding: 80px 40px;
+      text-align: center;
+      background-color: #fffaf5;
+    }
+    .contact h2 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      color: #8a6b5c;
+    }
+    .contact-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+    .contact-buttons a {
+      background-color: #d79ca6;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 12px 30px;
+      border-radius: 30px;
+      transition: 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .contact-buttons a:hover {
+      background-color: #b57b88;
+      transform: translateY(-3px);
     }
 
     /* FOOTER */
     footer {
-      background-color: #f0e4d7; text-align: center;
-      padding: 20px; font-size: 0.9rem; color: #6d5c53;
+      background-color: #f0e4d7;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #6d5c53;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
@@ -160,13 +257,16 @@
   <header>
     <img src="assets/logo.png" alt="VintyChic Logo">
     <div class="menu-toggle" id="menu-toggle">
-      <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
     </div>
     <nav>
       <ul id="nav-links">
         <li><a href="#home">Home</a></li>
         <li><a href="#gallery">Gallery</a></li>
         <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
   </header>
@@ -180,7 +280,7 @@
     <div class="hero-text">
       <h1>Where Vintage Meets Chic</h1>
       <p>Discover timeless thrift treasures — sustainable, stylish, and uniquely you.</p>
-      <a href="#gallery" class="shop-btn">Shop Now</a>
+      <a href="#contact" class="shop-btn">Shop Now</a>
     </div>
   </section>
 
@@ -188,39 +288,38 @@
   <section id="gallery" class="gallery">
     <h2>Our Collection</h2>
     <div class="gallery-container">
-      <img src="assets/image_1.png" alt="Product 1">
-      <img src="assets/image_2.png" alt="Product 2">
-      <img src="assets/image_3.png" alt="Product 3">
-      <img src="assets/image_4.png" alt="Product 4">
-      <img src="assets/image_5.png" alt="Product 5">
-      <img src="assets/image_6.png" alt="Product 6">
+      <img src="assets/image_1.png" alt="Item 1">
+      <img src="assets/image_2.png" alt="Item 2">
+      <img src="assets/image_3.png" alt="Item 3">
+      <img src="assets/image_4.png" alt="Item 4">
+      <img src="assets/image_5.png" alt="Item 5">
+      <img src="assets/image_6.png" alt="Item 6">
     </div>
   </section>
 
-  <!-- ORDER POPUP FORM -->
-  <div class="order-popup" id="orderPopup">
-    <div class="order-form">
-      <span class="close-popup" id="closePopup">&times;</span>
-      <h3>Place Your Order 💖</h3>
-      <input type="text" id="productName" placeholder="Product Name" readonly>
-      <input type="text" id="customerName" placeholder="Your Name" required>
-      <input type="email" id="customerEmail" placeholder="Your Email or Messenger">
-      <textarea id="message" placeholder="Message or Order Details"></textarea>
-      <textarea id="feedback" placeholder="Leave a short feedback (optional)"></textarea>
-      <div>
-        <button id="emailBtn"><i class="fas fa-envelope"></i> Send via Email</button>
-        <button id="fbBtn"><i class="fab fa-facebook-f"></i> Facebook</button>
-        <button id="igBtn"><i class="fab fa-instagram"></i> Instagram</button>
-      </div>
-    </div>
+  <!-- FULL IMAGE POPUP -->
+  <div class="popup" id="popup">
+    <img src="" alt="Full view">
   </div>
 
   <!-- ABOUT -->
   <section id="about" class="about">
     <h2>About VintyChic</h2>
-    <p>VintyChic is a curated thrift boutique where every piece tells a story. 
+    <p>
+      VintyChic is a curated thrift boutique where every piece tells a story. 
       Our mission is to make fashion sustainable, affordable, and irresistibly chic — 
-      because style never goes out of season.</p>
+      because style never goes out of season. Join us in giving pre-loved fashion a new life!
+    </p>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <h2>Contact Us</h2>
+    <div class="contact-buttons">
+      <a href="https://www.instagram.com/yumeko_____0/?igsh=MWd4enM4NWk3aGU4Zg%3D%3D&utm_source=qr#" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+      <a href="https://www.facebook.com/cyrinejade05/" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
+      <a href="mailto:cyrinejadeacolocado@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+    </div>
   </section>
 
   <!-- FOOTER -->
@@ -230,9 +329,12 @@
 
   <!-- SCRIPTS -->
   <script>
+    // Navbar toggle
     const menuToggle = document.getElementById('menu-toggle');
     const navLinks = document.getElementById('nav-links');
-    menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
 
     // Carousel
     const images = document.querySelectorAll('.carousel img');
@@ -241,43 +343,29 @@
       images[index].classList.remove('active');
       index = (index + 1) % images.length;
       images[index].classList.add('active');
-    }, 6000);
+    }, 6000); // slower transition (6 seconds)
 
     // Fade-in on scroll
-    const fadeEls = document.querySelectorAll('.gallery img, .about');
+    const fadeEls = document.querySelectorAll('.gallery img, .about, .contact');
     window.addEventListener('scroll', () => {
       fadeEls.forEach(el => {
         const top = el.getBoundingClientRect().top;
-        if (top < window.innerHeight - 100) el.classList.add('show');
+        if (top < window.innerHeight - 100) {
+          el.classList.add('show');
+        }
       });
     });
 
-    // Order Popup
-    const popup = document.getElementById('orderPopup');
-    const closePopup = document.getElementById('closePopup');
-    const productInput = document.getElementById('productName');
+    // Full image popup
+    const popup = document.getElementById('popup');
+    const popupImg = popup.querySelector('img');
     document.querySelectorAll('.gallery img').forEach(img => {
       img.addEventListener('click', () => {
-        productInput.value = img.alt;
-        popup.style.display = 'flex';
+        popupImg.src = img.src;
+        popup.classList.add('active');
       });
     });
-    closePopup.addEventListener('click', () => popup.style.display = 'none');
-    window.addEventListener('click', (e) => { if (e.target === popup) popup.style.display = 'none'; });
-
-    // Send buttons
-    const emailBtn = document.getElementById('emailBtn');
-    const fbBtn = document.getElementById('fbBtn');
-    const igBtn = document.getElementById('igBtn');
-    emailBtn.onclick = () => {
-      const name = document.getElementById('customerName').value;
-      const msg = document.getElementById('message').value;
-      const product = document.getElementById('productName').value;
-      const body = encodeURIComponent(`Product: ${product}\nName: ${name}\nMessage: ${msg}`);
-      window.open(`mailto:cyrinejadeacolocado@gmail.com?subject=Order from VintyChic&body=${body}`);
-    };
-    fbBtn.onclick = () => window.open('https://www.facebook.com/cyrinejade05/', '_blank');
-    igBtn.onclick = () => window.open('https://www.instagram.com/yumeko_____0/?igsh=MWd4enM4NWk3aGU4Zg%3D%3D&utm_source=qr#', '_blank');
+    popup.addEventListener('click', () => popup.classList.remove('active'));
   </script>
 </body>
 </html>
