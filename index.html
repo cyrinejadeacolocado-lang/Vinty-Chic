@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>VintyChic</title>
@@ -8,10 +9,10 @@
   <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-
   <link rel="icon" href="assets/favicon.png" type="image/png">
 
   <style>
+  
     :root{
       --bg: #f8f1e7;
       --muted: #6d5c53;
@@ -150,20 +151,78 @@
 </head>
 <body>
 
-  <header>
-    <div class="brand">
-      <img src="assets/logo.png" alt="VintyChic Logo">
-    </div>
-    <nav>
-      <ul id="nav-list">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <button class="hamburger" id="hamburger" aria-label="Open menu"><i class="fas fa-bars"></i></button>
-    </nav>
-  </header>
+ <header>
+  <div class="brand">
+    <img src="assets/logo.png" alt="VintyChic Logo">
+  </div>
+  <nav>
+    <ul id="nav-list">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <i class="fas fa-bars"></i>
+    </button>
+  </nav>
+</header>
+
+<style>
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  .brand img {
+    height: 80px; /* larger logo for easier visibility */
+  }
+
+  #nav-list {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+  }
+
+  #nav-list li a {
+    font-size: 1.25rem; /* larger font size for readability */
+    font-weight: 600;
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  #nav-list li a:hover {
+    color: #d63384; /* nice, visible hover color */
+  }
+
+  .hamburger {
+    font-size: 1.8rem; /* larger for easier tapping */
+    background: none;
+    border: none;
+    color: #333;
+    cursor: pointer;
+    display: none;
+  }
+
+  /* Responsive: show hamburger on mobile */
+  @media (max-width: 768px) {
+    #nav-list {
+      display: none;
+    }
+
+    .hamburger {
+      display: block;
+    }
+  }
+</style>
+
 
   <section id="home" class="carousel" aria-label="Main banner">
     <img src="assets/image_7.png" class="active" alt="Banner 1">
