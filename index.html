@@ -1,196 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>VintyChic</title>
 
-  <!-- Favicon -->
+  <!-- Favicon (place favicon.png next to index.html if you want) -->
   <link rel="icon" href="favicon.png" type="image/png">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #f8f1e7;
-      color: #5a4a42;
-      scroll-behavior: smooth;
-      overflow-x: hidden;
+    :root{
+      --bg:#f8f1e7;
+      --muted:#6d5c53;
+      --brand:#8a6b5c;
+      --accent:#d79ca6;
+      --accent-dark:#b57b88;
+      --card:#fffaf5;
+      --header:#fdf8f4;
+      --footer:#f0e4d7;
+      --popup-bg: rgba(0,0,0,0.55);
+      --pink-soft: #f7c6cc;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family:'Poppins',sans-serif;
+      background:var(--bg);
+      color:var(--muted);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      scroll-behavior:smooth;
     }
 
     /* HEADER */
-    header {
-      background-color: #fdf8f4;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 25px 70px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+    header{
+      position:sticky;top:0;z-index:1100;
+      background:var(--header);
+      display:flex;align-items:center;justify-content:space-between;
+      padding:20px 36px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.06);
     }
+    .brand{display:flex;align-items:center;gap:18px}
+    .brand img{height:88px;display:block}
+    nav{display:flex;align-items:center;gap:20px}
+    nav ul{display:flex;gap:26px;list-style:none}
+    nav a{text-decoration:none;color:var(--muted);font-weight:600}
+    nav a:hover{color:var(--accent)}
 
-    header img { height: 90px; transition: transform 0.3s ease; }
-    header img:hover { transform: scale(1.05); }
-
-    nav ul {
-      display: flex;
-      list-style: none;
-      gap: 35px;
-    }
-    nav ul li a {
-      text-decoration: none;
-      color: #5a4a42;
-      font-weight: 600;
-      font-size: 1.1rem;
-      transition: color 0.3s ease;
-    }
-    nav ul li a:hover { color: #d79ca6; }
-
-    /* TOGGLE MENU */
-    .menu-toggle { display: none; flex-direction: column; cursor: pointer; }
-    .bar { width: 25px; height: 3px; background-color: #5a4a42; margin: 4px 0; transition: 0.4s; }
-
-    @media (max-width: 768px) {
-      nav ul { display: none; flex-direction: column; background-color: #fdf8f4; position: absolute; top: 90px; right: 0; width: 100%; text-align: center; }
-      nav ul.active { display: flex; }
-      .menu-toggle { display: flex; }
+    /* mobile menu */
+    .hamburger{display:none;background:none;border:0;font-size:1.2rem;cursor:pointer;color:var(--muted)}
+    @media (max-width:800px){
+      nav ul{display:none;position:absolute;top:90px;right:0;background:var(--header);width:100%;flex-direction:column;padding:12px 0;gap:8px}
+      nav ul.show{display:flex}
+      .hamburger{display:inline-block}
     }
 
     /* CAROUSEL */
-    .carousel { position: relative; overflow: hidden; width: 100%; height: 75vh; }
-    .carousel img { width: 100%; height: 75vh; object-fit: cover; display: none; animation: fade 1.5s ease-in-out; }
-    .carousel img.active { display: block; }
-    @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
-
-    .hero-text {
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      background: rgba(255,255,255,0.7);
-      padding: 30px 50px;
-      border-radius: 15px;
-      text-align: center;
-      color: #8a6b5c;
+    .carousel{position:relative;overflow:hidden;width:100%;height:72vh;min-height:320px;background:var(--header)}
+    .carousel img{position:absolute;left:0;top:0;width:100%;height:72vh;object-fit:cover;opacity:0;transition:opacity 1.2s ease}
+    .carousel img.active{opacity:1}
+    .hero-text{
+      position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+      background:rgba(255,255,255,0.78);padding:26px 40px;border-radius:14px;text-align:center;max-width:86%;
     }
-    .hero-text h1 { font-size: 2.8rem; }
-    .hero-text p { font-size: 1.1rem; margin-top: 10px; }
-    .hero-text .shop-btn {
-      display: inline-block;
-      margin-top: 20px;
-      background-color: #d79ca6;
-      color: white;
-      text-decoration: none;
-      padding: 12px 28px;
-      border-radius: 30px;
-      font-weight: 600;
-      transition: background-color 0.3s;
-    }
-    .hero-text .shop-btn:hover { background-color: #b57b88; }
+    .hero-text h1{font-family:'Montserrat',sans-serif;color:var(--brand);font-size:2.6rem;margin-bottom:6px}
+    .hero-text p{color:var(--muted);margin-bottom:12px}
+    .hero-text .shop-btn{background:var(--accent);color:#fff;padding:10px 24px;border-radius:999px;text-decoration:none;font-weight:700}
+    .hero-text .shop-btn:hover{background:var(--accent-dark)}
 
     /* GALLERY */
-    .gallery {
-      padding: 80px 40px;
-      text-align: center;
-      background-color: #fffaf5;
-    }
-    .gallery h2 { font-size: 2rem; margin-bottom: 40px; color: #8a6b5c; }
-    .gallery-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-    .gallery img {
-      width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      cursor: pointer;
-      transform: scale(1);
-      opacity: 0;
-      transition: transform 0.4s, box-shadow 0.4s, opacity 1s ease;
-    }
-    .gallery img:hover { transform: scale(1.05); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
-    .show { opacity: 1 !important; }
+    section{padding:68px 36px}
+    .gallery{background:var(--card)}
+    .gallery h2{font-size:1.9rem;color:var(--brand);margin-bottom:20px}
+    .gallery-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:18px}
+    .gallery-item{position:relative;border-radius:12px;overflow:hidden;cursor:pointer}
+    .gallery-item img{width:100%;height:100%;aspect-ratio:4/5;object-fit:cover;display:block;transform:scale(1);transition:transform .35s,box-shadow .35s,opacity .9s}
+    .gallery-item:hover img{transform:scale(1.04);box-shadow:0 12px 30px rgba(0,0,0,0.12)}
+    .gallery-item.revealed img{opacity:1;transform:none}
 
-    /* POPUP FULL IMAGE */
-    .popup {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.8);
-      display: none; justify-content: center; align-items: center;
-      z-index: 2000;
+    /* ORDER POPUP */
+    .overlay{
+      position:fixed;inset:0;background:var(--popup-bg);backdrop-filter:blur(4px);
+      display:none;align-items:center;justify-content:center;padding:20px;z-index:2200;
     }
-    .popup img { max-width: 90%; max-height: 80%; border-radius: 10px; }
-    .popup.active { display: flex; }
+    .overlay.open{display:flex;animation:fadeIn .25s ease}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 
-    /* ABOUT */
-    .about {
-      background-color: #fdf8f4;
-      padding: 80px 40px;
-      text-align: center;
+    .popup-card{
+      width:100%;max-width:520px;border-radius:16px;background:#fffaf8;padding:22px;box-shadow:0 18px 60px rgba(0,0,0,0.28);position:relative;
+      font-family:'Poppins',sans-serif;
     }
-    .about h2 { font-size: 2rem; margin-bottom: 20px; color: #8a6b5c; }
-    .about p {
-      max-width: 700px; margin: auto;
-      font-size: 1.1rem; line-height: 1.6;
-      color: #6d5c53;
-    }
+    .close-x{position:absolute;right:14px;top:12px;background:none;border:0;font-size:1.1rem;color:var(--brand);cursor:pointer}
+    .popup-title{font-family:'Montserrat',sans-serif;color:var(--brand);font-size:1.5rem;margin-bottom:8px}
+    .popup-sub{color:var(--muted);font-size:0.95rem;margin-bottom:14px}
 
-    /* ORDER SECTION */
-    .order {
-      background-color: #000;
-      color: #f7c6cc;
-      text-align: center;
-      padding: 80px 40px;
+    .form-row{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+    .form-row input,.form-row textarea{
+      border:1px solid #efd7d7;padding:10px;border-radius:10px;font-size:0.95rem;font-family:'Poppins';outline:none;
     }
-    .order h2 {
-      font-size: 2rem;
-      margin-bottom: 30px;
-      font-weight: 600;
-    }
-    .order-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 25px;
-      flex-wrap: wrap;
-    }
-    .order-buttons a {
-      background-color: #f7c6cc;
-      color: #000;
-      text-decoration: none;
-      font-weight: 600;
-      padding: 12px 30px;
-      border-radius: 30px;
-      transition: 0.3s;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .order-buttons a:hover {
-      background-color: #d79ca6;
-      color: #fff;
-      transform: translateY(-3px);
-    }
+    .form-row input[readonly]{background:#fff7f6}
+    .form-row textarea{min-height:70px;resize:none}
 
-    /* FOOTER */
-    footer {
-      background-color: #f0e4d7;
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
-      color: #6d5c53;
+    .btn-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+    .btn{
+      padding:10px 16px;border-radius:999px;border:0;cursor:pointer;font-weight:700;
+      display:inline-flex;align-items:center;gap:10px;
     }
+    .btn.email{background:var(--brand);color:#fff}
+    .btn.facebook{background:#1877f2;color:#fff}
+    .btn.instagram{background:linear-gradient(45deg,#f58529,#dd2a7b,#8134af);color:#fff}
+    .btn:hover{transform:translateY(-3px);transition:transform .15s}
 
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
+    /* Thank-you toast */
+    .toast{
+      position:fixed;bottom:28px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.85);
+      color:#fff;padding:10px 16px;border-radius:999px;font-weight:600;display:none;z-index:2300;
+    }
+    .toast.show{display:block;animation:toastIn .28s ease}
+    @keyframes toastIn{from{transform:translate(-50%,16px);opacity:0}to{transform:translate(-50%,0);opacity:1}}
+
+    /* ABOUT & FOOTER */
+    .about{background:var(--header);text-align:center;padding:64px 36px}
+    .about h2{font-size:1.8rem;color:var(--brand);margin-bottom:10px}
+    .about p{max-width:760px;margin:0 auto;color:var(--muted);line-height:1.6}
+
+    footer{background:var(--footer);text-align:center;padding:20px;color:var(--muted)}
+
+    /* responsive tweaks */
+    @media (max-width:880px){
+      .hero-text h1{font-size:1.8rem}
+      .brand img{height:72px}
+      .carousel{height:55vh}
+      .carousel img{height:55vh}
+    }
+    @media (max-width:520px){
+      header{padding:12px 14px}
+      .hero-text{padding:18px}
+      .popup-card{padding:16px}
     }
   </style>
 </head>
@@ -198,117 +149,267 @@
 
   <!-- HEADER -->
   <header>
-    <img src="assets/logo.png" alt="VintyChic Logo">
-    <div class="menu-toggle" id="menu-toggle">
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
+    <div class="brand">
+      <img src="assets/logo.png" alt="VintyChic logo">
     </div>
+
     <nav>
-      <ul id="nav-links">
+      <button class="hamburger hamburger-btn" id="hamburger" aria-label="menu">
+        <i class="fas fa-bars"></i>
+      </button>
+      <ul id="navList">
         <li><a href="#home">Home</a></li>
         <li><a href="#gallery">Gallery</a></li>
         <li><a href="#about">About</a></li>
-        <li><a href="#order">Order</a></li>
+        <li><a href="#footer">Contact</a></li>
       </ul>
     </nav>
   </header>
 
   <!-- CAROUSEL -->
-  <section id="home" class="carousel">
-    <img src="assets/image_7.png" class="active">
-    <img src="assets/image_8.png">
-    <img src="assets/image_9.png">
-    <img src="assets/image_10.png">
-    <div class="hero-text">
-      <h1>Where Vintage Meets Chic</h1>
+  <section id="home" class="carousel" aria-label="Main banner">
+    <img src="assets/image_7.png" class="active" alt="carousel 1">
+    <img src="assets/image_8.png" alt="carousel 2">
+    <img src="assets/image_9.png" alt="carousel 3">
+    <img src="assets/image_10.png" alt="carousel 4">
+
+    <div class="hero-text" role="region" aria-labelledby="hero-title">
+      <h1 id="hero-title">Where Vintage Meets Chic</h1>
       <p>Discover timeless thrift treasures — sustainable, stylish, and uniquely you.</p>
-      <a href="#order" class="shop-btn">Shop Now</a>
+      <a class="shop-btn" href="#gallery">Shop Now</a>
     </div>
   </section>
 
   <!-- GALLERY -->
   <section id="gallery" class="gallery">
     <h2>Our Collection</h2>
-    <div class="gallery-container">
-      <img src="assets/image_1.png">
-      <img src="assets/image_2.png">
-      <img src="assets/image_3.png">
-      <img src="assets/image_4.png">
-      <img src="assets/image_5.png">
-      <img src="assets/image_6.png">
+
+    <div class="gallery-container" id="galleryGrid">
+      <!-- Item 1..6 -->
+      <div class="gallery-item" data-item="Item 1">
+        <img src="assets/image_1.png" alt="Item 1">
+      </div>
+      <div class="gallery-item" data-item="Item 2">
+        <img src="assets/image_2.png" alt="Item 2">
+      </div>
+      <div class="gallery-item" data-item="Item 3">
+        <img src="assets/image_3.png" alt="Item 3">
+      </div>
+      <div class="gallery-item" data-item="Item 4">
+        <img src="assets/image_4.png" alt="Item 4">
+      </div>
+      <div class="gallery-item" data-item="Item 5">
+        <img src="assets/image_5.png" alt="Item 5">
+      </div>
+      <div class="gallery-item" data-item="Item 6">
+        <img src="assets/image_6.png" alt="Item 6">
+      </div>
     </div>
   </section>
 
-  <!-- POPUP FULL IMAGE -->
-  <div class="popup" id="popup">
-    <img src="" alt="Full view">
+  <!-- ORDER OVERLAY (popup) -->
+  <div class="overlay" id="overlay" aria-hidden="true">
+    <div class="popup-card" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+      <button class="close-x" id="closePopup" aria-label="Close popup">&times;</button>
+      <div class="popup-title" id="popupTitle">Place your order</div>
+      <div class="popup-sub">A quick and pretty form — choose how you'd like to send your order.</div>
+
+      <div class="form-row">
+        <label class="sr-only">Product</label>
+        <input id="orderProduct" type="text" readonly value="Item 1">
+      </div>
+
+      <div class="form-row">
+        <label class="sr-only">Your name</label>
+        <input id="orderName" type="text" placeholder="Your full name" required>
+      </div>
+
+      <div class="form-row">
+        <label class="sr-only">Email or contact</label>
+        <input id="orderContact" type="text" placeholder="Your email or messenger handle (optional)">
+      </div>
+
+      <div class="form-row">
+        <label class="sr-only">Order details</label>
+        <textarea id="orderDetails" placeholder="Order details: size, color, notes..."></textarea>
+      </div>
+
+      <div class="form-row">
+        <label class="sr-only">Feedback</label>
+        <textarea id="orderFeedback" placeholder="Feedback (optional) — tell us what you like!"></textarea>
+      </div>
+
+      <div class="btn-row" style="margin-top:6px;">
+        <button class="btn email" id="sendEmail"><i class="fas fa-envelope"></i> Send via Email</button>
+        <button class="btn facebook" id="sendFB"><i class="fab fa-facebook-f"></i> Message on Facebook</button>
+        <button class="btn instagram" id="sendIG"><i class="fab fa-instagram"></i> Message on Instagram</button>
+      </div>
+    </div>
   </div>
 
   <!-- ABOUT -->
   <section id="about" class="about">
     <h2>About VintyChic</h2>
-    <p>VintyChic is a curated thrift boutique where every piece tells a story. 
-      Our mission is to make fashion sustainable, affordable, and irresistibly chic — 
-      because style never goes out of season.</p>
+    <p>
+      VintyChic is a curated thrift boutique where every piece tells a story. Our mission is to make fashion sustainable, affordable, and irresistibly chic — because style never goes out of season.
+    </p>
   </section>
 
-  <!-- ORDER SECTION -->
-  <section id="order" class="order">
-    <h2>Place Your Order</h2>
-    <div class="order-buttons">
-      <a href="https://www.instagram.com/yumeko_____0/?igsh=MWd4enM4NWk3aGU4Zg%3D%3D&utm_source=qr#" target="_blank">
-        <i class="fab fa-instagram"></i> Order via Instagram
-      </a>
-      <a href="https://www.facebook.com/cyrinejade05/" target="_blank">
-        <i class="fab fa-facebook-f"></i> Order via Facebook
-      </a>
-      <a href="mailto:cyrinejadeacolocado@gmail.com">
-        <i class="fas fa-envelope"></i> Order via Email
-      </a>
+  <!-- FOOTER & CONTACT -->
+  <footer id="footer">
+    <div style="padding:18px 12px 6px;">
+      <div style="margin-bottom:8px;font-weight:700">Contact</div>
+      <div style="display:flex;gap:10px;justify-content:center;">
+        <a class="btn" style="background:var(--accent);color:#fff;border-radius:999px;padding:8px 14px;text-decoration:none" href="https://www.instagram.com/yumeko_____0/?igsh=MWd4enM4NWk3aGU4Zg%3D%3D&utm_source=qr#" target="_blank" rel="noopener"><i class="fab fa-instagram"></i>&nbsp;Instagram</a>
+        <a class="btn" style="background:#1877f2;color:#fff;border-radius:999px;padding:8px 14px;text-decoration:none" href="https://www.facebook.com/cyrinejade05/" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i>&nbsp;Facebook</a>
+        <a class="btn" style="background:var(--brand);color:#fff;border-radius:999px;padding:8px 14px;text-decoration:none" href="mailto:cyrinejadeacolocado@gmail.com"><i class="fas fa-envelope"></i>&nbsp;Email</a>
+      </div>
     </div>
-  </section>
 
-  <!-- FOOTER -->
-  <footer>
-    © 2025 VintyChic | Designed by <strong>Cyrine Jade A. Colocado</strong>.
+    <div style="padding:12px 0;color:var(--muted)">© 2025 VintyChic | Designed by <strong>Cyrine Jade A. Colocado</strong></div>
   </footer>
+
+  <!-- THANK YOU TOAST -->
+  <div class="toast" id="toast">Thank you! Your message was prepared.</div>
 
   <!-- SCRIPTS -->
   <script>
-    // Navbar toggle
-    const menuToggle = document.getElementById('menu-toggle');
-    const navLinks = document.getElementById('nav-links');
-    menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+    // Mobile nav toggle
+    const hamburger = document.getElementById('hamburger');
+    const navList = document.getElementById('navList');
+    hamburger && hamburger.addEventListener('click', ()=> navList.classList.toggle('show'));
 
-    // Carousel
-    const images = document.querySelectorAll('.carousel img');
-    let index = 0;
-    setInterval(() => {
-      images[index].classList.remove('active');
-      index = (index + 1) % images.length;
-      images[index].classList.add('active');
-    }, 6000);
+    // Carousel behavior (slow)
+    const carouselImgs = document.querySelectorAll('.carousel img');
+    let cIndex = 0;
+    const cInterval = 6000; // 6s
+    let cTimer = setInterval(nextSlide, cInterval);
+    function nextSlide(){
+      carouselImgs[cIndex].classList.remove('active');
+      cIndex = (cIndex+1) % carouselImgs.length;
+      carouselImgs[cIndex].classList.add('active');
+    }
 
-    // Fade-in on scroll
-    const fadeEls = document.querySelectorAll('.gallery img, .about, .order');
-    window.addEventListener('scroll', () => {
-      fadeEls.forEach(el => {
-        const top = el.getBoundingClientRect().top;
-        if (top < window.innerHeight - 100) el.classList.add('show');
+    // Gallery reveal on scroll
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if(e.isIntersecting) {
+          e.target.classList.add('revealed');
+        }
+      });
+    }, {threshold:0.12});
+    galleryItems.forEach(i => io.observe(i));
+
+    // ORDER POPUP logic
+    const overlay = document.getElementById('overlay');
+    const closePopup = document.getElementById('closePopup');
+    const orderProduct = document.getElementById('orderProduct');
+    const orderName = document.getElementById('orderName');
+    const orderContact = document.getElementById('orderContact');
+    const orderDetails = document.getElementById('orderDetails');
+    const orderFeedback = document.getElementById('orderFeedback');
+    const toast = document.getElementById('toast');
+
+    // Open popup when clicking a gallery item; auto-fill "Item X" from data-item
+    document.querySelectorAll('.gallery-item').forEach((el, idx) => {
+      el.addEventListener('click', () => {
+        const itemLabel = el.getAttribute('data-item') || `Item ${idx+1}`;
+        orderProduct.value = `Ordering: ${itemLabel}`;
+        // clear previous inputs lightly
+        orderName.value = '';
+        orderContact.value = '';
+        orderDetails.value = '';
+        orderFeedback.value = '';
+        overlay.classList.add('open');
+        overlay.setAttribute('aria-hidden','false');
+        // pause carousel while popup open
+        clearInterval(cTimer);
       });
     });
 
-    // Full image popup
-    const popup = document.getElementById('popup');
-    const popupImg = popup.querySelector('img');
-    document.querySelectorAll('.gallery img').forEach(img => {
-      img.addEventListener('click', () => {
-        popupImg.src = img.src;
-        popup.classList.add('active');
+    // Close popup
+    closePopup.addEventListener('click', closeOverlay);
+    overlay.addEventListener('click', (e) => {
+      if(e.target === overlay) closeOverlay();
+    });
+    function closeOverlay(){
+      overlay.classList.remove('open');
+      overlay.setAttribute('aria-hidden','true');
+      // restart carousel
+      cTimer = setInterval(nextSlide, cInterval);
+    }
+
+    // Build message text from form
+    function buildMessage(){
+      const p = orderProduct.value || '';
+      const name = orderName.value || '';
+      const contact = orderContact.value || '';
+      const details = orderDetails.value || '';
+      const feedback = orderFeedback.value || '';
+      let msg = `Hello Cyrine,%0D%0A%0D%0AI'd like to place an order from VintyChic.%0D%0A%0D%0A${encodeURIComponent(p)}%0D%0AName: ${encodeURIComponent(name)}%0D%0AContact: ${encodeURIComponent(contact)}%0D%0AOrder details: ${encodeURIComponent(details)}%0D%0AFeedback: ${encodeURIComponent(feedback)}%0D%0A%0D%0APlease let me know how to proceed. Thank you!`;
+      return msg;
+    }
+
+    // Show toast
+    function showToast(text='Thank you! Your message was prepared.'){
+      toast.textContent = text;
+      toast.classList.add('show');
+      setTimeout(()=> toast.classList.remove('show'), 3200);
+    }
+
+    // Email send button -> open mailto with prefilled subject & body, show thanks toast
+    document.getElementById('sendEmail').addEventListener('click', () => {
+      const subject = encodeURIComponent('VintyChic order');
+      const body = buildMessage();
+      const mail = `mailto:cyrinejadeacolocado@gmail.com?subject=${subject}&body=${body}`;
+      // open mail client
+      window.location.href = mail;
+      showToast('Email composer opened — thank you!');
+      // optionally close overlay after a short delay
+      setTimeout(()=> closeOverlay(), 800);
+    });
+
+    // Facebook button: copy message to clipboard + open FB profile
+    document.getElementById('sendFB').addEventListener('click', async () => {
+      const msgText = decodeURIComponent(buildMessage()).replace(/%0D%0A/g, '\n');
+      try {
+        await navigator.clipboard.writeText(msgText);
+        window.open('https://www.facebook.com/cyrinejade05/', '_blank', 'noopener');
+        showToast('Message copied. Paste into Facebook message to send.');
+      } catch (e) {
+        // fallback: still open fb but notify user
+        window.open('https://www.facebook.com/cyrinejade05/', '_blank', 'noopener');
+        showToast('Opened Facebook — please paste your message there.');
+      }
+      setTimeout(()=> closeOverlay(), 900);
+    });
+
+    // Instagram button: copy message then open IG
+    document.getElementById('sendIG').addEventListener('click', async () => {
+      const msgText = decodeURIComponent(buildMessage()).replace(/%0D%0A/g, '\n');
+      try {
+        await navigator.clipboard.writeText(msgText);
+        window.open('https://www.instagram.com/yumeko_____0/', '_blank', 'noopener');
+        showToast('Message copied. Paste into Instagram DM to send.');
+      } catch (e) {
+        window.open('https://www.instagram.com/yumeko_____0/', '_blank', 'noopener');
+        showToast('Opened Instagram — please paste your message there.');
+      }
+      setTimeout(()=> closeOverlay(), 900);
+    });
+
+    // accessibility: ESC closes overlay
+    document.addEventListener('keydown', (e) => {
+      if(e.key === 'Escape' && overlay.classList.contains('open')) closeOverlay();
+    });
+
+    // small: close mobile nav on link click
+    document.querySelectorAll('nav a').forEach(a => {
+      a.addEventListener('click', ()=> {
+        if(window.innerWidth <= 800) navList && navList.classList.remove('show');
       });
     });
-    popup.addEventListener('click', () => popup.classList.remove('active'));
   </script>
 </body>
 </html>
