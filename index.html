@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>VintyChic</title>
@@ -12,7 +11,6 @@
   <link rel="icon" href="assets/favicon.png" type="image/png">
 
   <style>
-  
     :root{
       --bg: #f8f1e7;
       --muted: #6d5c53;
@@ -35,6 +33,7 @@
       scroll-behavior:smooth;
     }
 
+    /* ===== HEADER ===== */
     header{
       position:sticky;top:0;z-index:1200;
       background:var(--header);
@@ -43,9 +42,29 @@
       box-shadow:0 2px 8px rgba(0,0,0,0.06);
     }
 
-    .brand{display:flex;align-items:center;gap:18px;}
-    .brand img{height:92px;width:auto;display:block}
-    .brand h1{font-family:'Montserrat',sans-serif;color:var(--brand);font-size:1.2rem}
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .brand img{
+      height:80px;
+      width:auto;
+      display:block;
+    }
+
+    .brand a{
+      text-decoration:none;
+    }
+
+    .brand h1{
+      font-family:'Montserrat',sans-serif;
+      font-weight:600;
+      font-size:1.6rem;
+      color:var(--brand);
+      letter-spacing:1px;
+    }
 
     nav{display:flex;align-items:center;gap:28px}
     nav ul{display:flex;gap:28px;list-style:none}
@@ -54,6 +73,7 @@
 
     .hamburger{display:none;background:none;border:0;font-size:1.3rem;cursor:pointer;color:var(--muted)}
 
+    /* ===== CAROUSEL ===== */
     .carousel{
       position:relative;width:100%;
       height:72vh;min-height:360px;overflow:hidden;
@@ -81,6 +101,7 @@
     .carousel .dots button{width:10px;height:10px;border-radius:50%;border:0;background:rgba(255,255,255,0.6);cursor:pointer}
     .carousel .dots button.active{background:var(--accent)}
 
+    /* ===== CONTENT SECTIONS ===== */
     section{padding:72px 36px}
     .gallery{background:var(--card)}
     .gallery h2,.about h2,.contact h2{font-size:1.9rem;color:var(--brand);margin-bottom:18px}
@@ -110,6 +131,7 @@
 
     footer{background:var(--footer);padding:22px;text-align:center;color:var(--muted);font-size:0.95rem}
 
+    /* ===== MODAL ===== */
     .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.6);display:none;align-items:center;justify-content:center;z-index:1400;padding:20px}
     .modal-backdrop.open{display:flex}
     .modal{
@@ -130,12 +152,13 @@
     .primary{background:var(--brand);color:#fff;padding:10px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:700}
     .secondary{background:#f3efe9;border:0;padding:10px 12px;border-radius:10px;cursor:pointer}
 
+    /* ===== RESPONSIVE ===== */
     @media (max-width:980px){
       .modal{grid-template-columns:1fr}
       .modal .left{padding:18px}
       .modal .right{padding:16px}
       header{padding:16px}
-      .brand img{height:78px}
+      .brand img{height:72px}
       .carousel img{height:60vh}
     }
 
@@ -146,83 +169,29 @@
       .hero-text p{font-size:0.95rem}
       .carousel{height:58vh}
       .carousel img{height:58vh}
+      .brand h1{font-size:1.2rem}
     }
   </style>
 </head>
 <body>
 
- <header>
-  <div class="brand">
-    <img src="assets/logo.png" alt="VintyChic Logo">
-  </div>
-  <nav>
-    <ul id="nav-list">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#gallery">Gallery</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <button class="hamburger" id="hamburger" aria-label="Open menu">
-      <i class="fas fa-bars"></i>
-    </button>
-  </nav>
-</header>
-
-<style>
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 5%;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  }
-
-  .brand img {
-    height: 80px; /* larger logo for easier visibility */
-  }
-
-  #nav-list {
-    list-style: none;
-    display: flex;
-    gap: 30px;
-    margin: 0;
-    padding: 0;
-  }
-
-  #nav-list li a {
-    font-size: 1.25rem; /* larger font size for readability */
-    font-weight: 600;
-    color: #333;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-
-  #nav-list li a:hover {
-    color: #d63384; /* nice, visible hover color */
-  }
-
-  .hamburger {
-    font-size: 1.8rem; /* larger for easier tapping */
-    background: none;
-    border: none;
-    color: #333;
-    cursor: pointer;
-    display: none;
-  }
-
-  /* Responsive: show hamburger on mobile */
-  @media (max-width: 768px) {
-    #nav-list {
-      display: none;
-    }
-
-    .hamburger {
-      display: block;
-    }
-  }
-</style>
-
+  <header>
+    <div class="brand">
+      <img src="assets/logo.png" alt="VintyChic Logo">
+      <a href="#home"><h1>VintyChic</h1></a>
+    </div>
+    <nav>
+      <ul id="nav-list">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <i class="fas fa-bars"></i>
+      </button>
+    </nav>
+  </header>
 
   <section id="home" class="carousel" aria-label="Main banner">
     <img src="assets/image_7.png" class="active" alt="Banner 1">
@@ -352,19 +321,19 @@
 
     function submitOrder(e){
       e.preventDefault();
-      const form=e.target;
-      const data={
-        name:form.customerName.value,
-        email:form.customerEmail.value,
-        phone:form.customerPhone.value,
-        product:form.product.value,
-        message:form.message.value
-      };
-      const mailto=`mailto:cyrinejadeacolocado@gmail.com?subject=Order%20Request%20for%20${encodeURIComponent(data.product)}&body=${encodeURIComponent(`Name: ${data.name}\nEmail: ${data.email}\nPhone: ${data.phone}\nProduct: ${data.product}\nMessage: ${data.message}`)}`;
-      window.location.href=mailto;
+      const name=document.getElementById('customer-name').value;
+      const email=document.getElementById('customer-email').value;
+      const phone=document.getElementById('customer-phone').value;
+      const product=document.getElementById('product-select').value;
+      const msg=document.getElementById('order-message').value;
+      const subject=encodeURIComponent(`Order Inquiry: ${product}`);
+      const body=encodeURIComponent(`Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nProduct: ${product}\nMessage:\n${msg}`);
+      window.location.href=`mailto:cyrinejadeacolocado@gmail.com?subject=${subject}&body=${body}`;
       modalBackdrop.classList.remove('open');
+      e.target.reset();
       return false;
     }
   </script>
+
 </body>
 </html>
